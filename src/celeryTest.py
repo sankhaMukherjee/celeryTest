@@ -61,24 +61,17 @@ def main(logger, resultsDict):
     # ------------------------------------
     importModules(resultsDict)
 
-    # Lets just create a simple testing 
-    # for other functions to follow
-    # -----------------------------------
+    from lib.worker import worker_1
 
-    sampleValues = [
-        (1, 2),
-        (1.2, 5),
-        (3, 'a'),
-        ('First', 'Second'),
-        (55,)
-    ]
+    result = worker_1.add.delay(2, 2)
+    for i in range(100):
+        print(result.state)
 
-    for s in sampleValues:
-        try:
-            sL.simpleTestFunction(*s)
-        except Exception as e:
-            logger.error('Unable to perform addition with values [{}]\n:{}'.format(
-                s, str(e)))
+    if result.state == 'SUCCESS':
+        r = result.get()
+        print(f'The result of this calculation is: {r}')
+
+    
 
     return
 
