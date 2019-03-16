@@ -3,6 +3,7 @@ import json, psycopg2
 
 from lib.celery.App import app
 
+
 config = json.load(open('../config/config.json'))
 logBase = config['logging']['logBase'] + 'lib.worker.worker_1'
 
