@@ -1,6 +1,6 @@
 from logs import logDecorator as lD
 import json, psycopg2
-from psycopg2.extras import execute_values
+from celery import Celery
 
 config = json.load(open('../config/config.json'))
 logBase = config['logging']['logBase'] + 'lib.celery.App'

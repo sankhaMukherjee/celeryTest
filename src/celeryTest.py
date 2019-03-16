@@ -61,6 +61,16 @@ def main(logger, resultsDict):
     # ------------------------------------
     importModules(resultsDict)
 
+    from lib.worker import worker_1
+
+    result = worker_1.add.delay(2, 2)
+    for i in range(100):
+        print(result.state)
+
+    if result.state == 'SUCCESS':
+        r = result.get()
+        print(f'The result of this calculation is: {r}')
+
     
 
     return
