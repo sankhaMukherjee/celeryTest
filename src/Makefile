@@ -7,6 +7,9 @@ run:
 runA:
 	../bin/run.sh -a
 
+runCelery:
+	celery -A lib.celery.App worker -l info
+
 # This is a quick check for timming.
 # For thorough results, use the profile
 # option
@@ -23,6 +26,12 @@ checkLog:
 
 checkTime:
 	../bin/checkTime.sh
+
+checkCeleryLog:
+	../bin/checkCeleryLog.sh
+
+checkCeleryTime:
+	../bin/checkCeleryTime.sh
 
 test:
 	python3 -m pytest ../tests

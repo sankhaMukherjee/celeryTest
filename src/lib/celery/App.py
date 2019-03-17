@@ -24,7 +24,10 @@ app = Celery(
 
 app.conf.update( **cConfig['extra'] )
 
-
+# ------------------------------------------------------------------
+# https://www.distributedpython.com/2018/08/28/celery-logging/
+# help about loggign is obtained from here ...
+# ------------------------------------------------------------------
 @after_setup_logger.connect
 def setup_loggers(logger, *args, **kwargs):
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')

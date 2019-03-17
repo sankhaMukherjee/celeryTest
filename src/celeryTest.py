@@ -5,6 +5,8 @@ from logs           import logDecorator  as lD
 from lib.testLib    import simpleLib     as sL
 from lib.argParsers import addAllParsers as aP
 
+import numpy as np
+
 config   = json.load(open('../config/config.json'))
 logBase  = config['logging']['logBase']
 logLevel = config['logging']['level']
@@ -72,6 +74,14 @@ def main(logger, resultsDict):
         print(f'The result of this calculation is: {r}')
 
     
+    results = [worker_1.add.delay(*np.random.randn( 2 )) for i in range(10000)]
+    while True:
+        done    = [ r.state == 'SUCCESS' for r in results]
+        tempResults = [ r.get() for r in results if r.state == 'SUCCESS']
+        print( 'Percentage done:{}, mean --> {}'.format(sum(done)*100.0/len(done), np.mean(tempResults) ))
+        if all(done):
+            done = [ r.get() for r in results ]
+            break
 
     return
 

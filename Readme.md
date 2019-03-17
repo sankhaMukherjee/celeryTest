@@ -12,7 +12,7 @@ You will need to have a valid Python installation on your system. This has been 
 
 ## Installing
 
-The folloiwing installations are for *nix-like systems. These have been tried on macOS Sierra (Version 10.12.6) before. 
+The folloiwing installations are for \*nix-like systems. These have been tried on macOS Sierra (Version 10.12.6) before. 
 
 1. Clone the program to your computer. 
 2. type `make firstRun`. This should do the following
@@ -44,6 +44,37 @@ Sankha Mukherjee - Initial work (2019)
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
+
+```
+Things to change:
+
+0. bin/vEnv.sh
+    import celery into the new module ------------------------------------------------[DONE]
+1. Makefile
+    allow for an easy start for celery workers ---------------------------------------[DONE]
+    check whether celery workers are working properly ... ----------------------------[]
+    check whether the Redis server is working properly -------------------------------[]
+2. lib:
+    2.1. celery (a whole new library) ------------------------------------------------[DONE]
+    2.2. celery (documentation for the library) --------------------------------------[]
+    2.3. Example library worker ... --------------------------------------------------[DONE]
+    2.4. Documentation for example library worker ... --------------------------------[]
+    2.5. Example of new module that uses this celery instance ------------------------[]
+    2.6. Make sure that everything is working properly -------------------------------[]
+
+3. config
+    3.1. celery.json --> This is a new file that needs to configure celery -----------[DONE]
+4. bin
+    4.1. the log libraries are in a separate file that starts with `celery_`. These are separately created.
+    4.2. The makefile is updated to make sure that the log files for celery can be read properly 
+
+database libraries
+3. lib.databaseIO.pgIO: allow the libraries to have multiple attempts on a fail
+
+json config files:
+    `import jsonref` instead of `import json`
+```
+
 
 ## Acknowledgments
 

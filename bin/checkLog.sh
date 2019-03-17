@@ -1,5 +1,5 @@
 #!/bin/bash 
 
-logFile=$(ls logs/*.log | sort | tail -n1)
+logFile=$(ls logs/20*.log | sort | tail -n1)
 
 cat $logFile
